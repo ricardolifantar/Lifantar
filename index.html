@@ -2,10 +2,80 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="monetag" content="50455b6090799b0a56fd4a5fe5d28b0e">
-    <title>Verificando sitio...</title>
+    <title>Lifantar - Cargando Película</title>
+    
+    <!-- Anuncio In-Page Push de Monetag -->
+    <script>(function(s){s.dataset.zone='11600517',s.src='https://nap5k.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+
+    <style>
+        body, html { 
+            margin: 0; 
+            padding: 0; 
+            height: 100%; 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+        }
+
+        .container {
+            background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1920'); 
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+
+        .box {
+            background-color: #1a6075;
+            padding: 15px 40px;
+            border-radius: 4px;
+            font-size: 28px;
+            font-weight: 300;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            margin-bottom: 15px;
+        }
+
+        .subtitle {
+            font-size: 22px;
+            font-weight: 400;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+        }
+
+        .timer {
+            font-size: 110px;
+            font-weight: 800;
+            line-height: 1;
+            margin-top: 10px;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.8);
+        }
+    </style>
 </head>
 <body>
-    <h1>Verificando propiedad del sitio...</h1>
+
+    <div class="container">
+        <div class="box">No presiones nada</div>
+        <div class="subtitle">Tu Película en 5 segundos...</div>
+        <div class="timer" id="countdown">5</div>
+    </div>
+
+    <script>
+        let seconds = 5;
+        const countdownEl = document.getElementById('countdown');
+
+        const interval = setInterval(() => {
+            seconds--;
+            countdownEl.textContent = seconds;
+            
+            if (seconds <= 0) {
+                clearInterval(interval);
+                window.location.href = 'https://www.plex.tv';
+            }
+        }, 1000);
+    </script>
 </body>
 </html>
