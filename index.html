@@ -2,21 +2,114 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Cargando contenido...</title>
-    <script>
-        // Abre la publicidad de Monetag
-        window.open('https://omg10.com/4/11585534', '_blank');
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lifantar - Cargando Película</title>
+    
+    <!-- 1. PEGA AQUÍ TU SCRIPT DE BANNERS DE MONETAG (In-Page Push) -->
+    <!-- Reemplaza esta línea de ejemplo con tu código real -->
+    <script src="https://alwingulla.com/88/tag.min.js" data-zone="XXXXX" async data-cfasync="false"></script>
+    <!-- ------------------------------------------------------------ -->
 
-        // Redirige a Plex tras 3 segundos
-        setTimeout(function() {
-            window.location.href = 'https://www.plex.tv';
-        }, 3000);
-    </script>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden; /* Evita barras de desplazamiento */
+        }
+
+        /* Imagen de fondo de montañas */
+        .bg-image {
+            background-image: url('https://images.unsplash.com/photo-1580477319013-1627092144d1?q=80&w=1920'); /* Imagen similar de alta calidad */
+            background-size: cover;
+            background-position: center;
+            filter: blur(2px) brightness(0.8); /* Ligero desenfoque y oscurecimiento para legibilidad */
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .main-container {
+            text-align: center;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            padding: 20px;
+        }
+
+        /* Caja de texto "No presiones nada" */
+        .info-box {
+            background-color: #1a6075; /* Color teal oscuro exacto */
+            padding: 15px 40px;
+            border-radius: 4px; /* Bordes ligeramente suavizados */
+            font-size: 28px;
+            font-weight: 300;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+
+        .subtitle {
+            font-size: 20px;
+            font-weight: 400;
+            margin-top: 5px;
+        }
+
+        /* Contador grande */
+        .timer {
+            font-size: 140px; /* Muy grande, como en la imagen */
+            font-weight: 800;
+            line-height: 1;
+            margin: 10px 0;
+        }
+
+        .banner-info {
+            font-size: 12px;
+            opacity: 0.7;
+            margin-top: 10px;
+        }
+    </style>
 </head>
 <body>
-    <div style="text-align:center; margin-top:50px; font-family:sans-serif;">
-        <h1>Redirigiendo a la plataforma...</h1>
-        <p>Espere unos segundos mientras cargamos el catálogo.</p>
+
+    <!-- Imagen de fondo -->
+    <div class="bg-image"></div>
+
+    <div class="main-container">
+        <!-- Textos principales exactos -->
+        <div class="info-box">No presiones nada</div>
+        <div class="subtitle">Tu Película en 5 segundos...</div>
+
+        <!-- El contador dinámico -->
+        <div class="timer" id="countdown">5</div>
+
+        <!-- Info opcional sobre banners -->
+        <div class="banner-info">(Secciones de Banners In-Page aparecerán en los bordes)</div>
     </div>
+
+    <script>
+        // Configuración de la cuenta regresiva
+        let seconds = 5; // Empezar en 5
+        const countdownEl = document.getElementById('countdown');
+
+        // Intervalo que se ejecuta cada 1000ms (1 segundo)
+        const interval = setInterval(() => {
+            seconds--;
+            countdownEl.textContent = seconds; // Actualizar el número en pantalla
+            
+            // Cuando llegue a 0
+            if (seconds <= 0) {
+                clearInterval(interval); // Detener el contador
+                
+                // Redirigir a tu servidor de películas (Plex)
+                window.location.href = 'https://www.plex.tv'; 
+            }
+        }, 1000);
+    </script>
+
 </body>
 </html>
